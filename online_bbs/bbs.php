@@ -11,13 +11,11 @@
     //     echo $_SESSION["nickname"];
     // }
 
+    $db = mysql_connect('localhost','root','mangoshake');
+    mysql_select_db('oneline_bbs',$db);
+    mysql_set_charset('utf8',$db);
 
-
-    // DBへの接続
-    $db = mysqli_connect('mysql101.phy.lolipop.lan','LAA0670492','mysql','LAA0670492-onlinebbs');
-    mysqli_set_charset($db,'utf8');
 ?>
-
 <?php
     // var_dump($_POST);
     
@@ -25,11 +23,11 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // リクエストメソッドがPOSTだった場合のみ処理
 
-      // mysqli_real_escape_string()について
+      // mysql_real_escape_string()について
       // inputタグに悪意あるユーザーがSQL文などを入力した際に、
       // ただの文字列として受け取るように文字をエスケープする関数
-      $nickname = mysqli_real_escape_string($db, $_POST['nickname']);
-      $comment = mysqli_real_escape_string($db, $_POST['comment']);
+      $nickname = mysql_real_escape_string($_POST['nickname']);
+      $comment = mysql_real_escape_string($_POST['comment']);
 
       $sql = sprintf('INSERT INTO posts SET nickname="%s", comment="%s", created=NOW()',
             $nickname,
@@ -38,7 +36,7 @@
 
       $_SESSION["nickname"] = $nickname;
 
-      mysqli_query($db,$sql);
+      mysql_query($sql,$db);
       header('Location: bbs.php');
     }
 ?>
@@ -68,7 +66,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#page-top"><span class="strong-title"><i class="fa fa-linux"></i> Online bbs</span></a>
+              <a class="navbar-brand" href="#page-top"><span class="strong-title"><i class="fa fa-linux"></i> Oneline bbs</span></a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -132,12 +130,12 @@
         <?php
             // データの取得と表示
             $sql = 'SELECT * FROM posts ORDER BY `created` DESC';
-            $posts = mysqli_query($db, $sql) or die(mysqli_error($db));
+            $posts = mysql_query($sql,$db) or die(mysql_error($db));
         ?>
 
         <div class="timeline-centered">
 
-        <?php while ($post = mysqli_fetch_assoc($posts)): ?>
+        <?php while ($post = mysql_fetch_assoc($posts)): ?>
 
         <article class="timeline-entry">
 
@@ -184,7 +182,6 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="assets/js/bootstrap.js"></script>
   <script src="assets/js/form.js"></script>
-
 </body>
 </html>
 
