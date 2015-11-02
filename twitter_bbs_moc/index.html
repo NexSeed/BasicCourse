@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>ひとこと掲示板</title>
+</head>
+
+<body>
+<div id="wrap">
+	<div id="head">
+		<h1>ひとこと掲示板</h1>
+	</div>
+	<div id="content">
+		<div style="text-align: right"><a href="#">ログアウト</a></div>
+		<form action="" method="post">
+			<dl>
+				<dt>◯◯さん、メッセージをどうぞ</dt>
+				<dd>
+				<textarea name="message" cols="50" rows="5"></textarea>
+				<input type="hidden" name="reply_post_id" />
+				</dd>
+			</dl>
+			<div>
+			<p>
+				<input type="submit" value="投稿する" />
+			</p>
+			</div>
+		</form>
+
+		<div class="msg">
+
+			<img src="member_picture/dummy.png" width="48" height="48" alt="dummy" />
+
+			<p>こんにちはです。<span class="name">（えりこ）</span>[<a href="index.html?res=1">Re</a>]</p>
+			<p class="day">
+				<a href="view.html?id=2">2015-10-10 12:00:00</a>
+				<a href="view.html">返信元のメッセージ</a>
+				[<a href="#" style="color: #F33;">削除</a>]
+			</p>
+
+
+		</div>
+
+		<div class="msg">
+
+			<img src="member_picture/dummy.png" width="48" height="48" alt="dummy" />
+
+			<p>押忍！<span class="name">（しんや）</span>[<a href="index.html?res=1">Re</a>]</p>
+			<p class="day">
+				<a href="view.html?id=2">2015-10-10 12:00:00</a>
+				[<a href="#" style="color: #F33;">削除</a>]
+			</p>
+
+
+		</div>
+
+		<ul class="paging">
+			<li><a href="#">前のページへ</a></li>
+			<li><a href="#">次のページへ</a></li>
+		</ul>
+	</div>
+	<div id="foot">
+		<p><img src="images/txt_copyright.png" width="136" 	height="15" alt="(C) H2O SPACE, Mynavi" /></p>
+	</div>
+</div>
+</body>
+</html>
